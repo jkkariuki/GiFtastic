@@ -1,0 +1,13 @@
+.showBtn{
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#gifSpace{
+	border: 2px solid black;
+}
+
+#gifs{
+	display: inline-block;
+	margin-right: 5px;
+}
