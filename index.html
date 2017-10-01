@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Giftastic</title>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
@@ -12,92 +13,23 @@
     <div class="container">
         <div id="button-space">
         </div>
-        <h1>Show Search</h1>
-        <form id='show-form'>
-            <label for='show-input'>Add your Favorite 90's Show.</label>
-            <input type="text" id="show-input">
-            <br>
-            <input id="add-show" type="submit" value="Add a Show">
-        </form>
-        <div id='row'>
-            <div class='col-md-9' id='gifSpace'>
+        <div class="row">
+            <div class='col-md-7' id='gifSpace'>
+            <h1>Click a show and add your own to the list</h1>
             </div>
-        </div>
+            <form class="col-md-3" id='show-form'>
+            <h1>Show Search</h1>
+                <label for='show-input'>Add your Favorite 90's Show.</label>
+                <input type="text" id="show-input">
+                <br>
+                <input id="add-show" type="submit" value="Add a Show">
+            </form>
+        </div>        
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-    var ninetysfavorites = ["Fresh Prince", "Family Matters", "Martin", "Dragon Ball Z", "Dexter's Lab", "Johnny Bravo"];
-
-    function setButtons() {
-        $("#button-space").empty();
-
-        for (var i = 0; i < ninetysfavorites.length; i++) {
-            var buttons = $("<button>");
-            buttons.addClass("showBtn");
-            buttons.text(ninetysfavorites[i]);
-            buttons.attr("value", ninetysfavorites[i]);
-            $("#button-space").append(buttons);
-        }
-
-        $(".showBtn").on("click", function() {
-            var show = $(this).attr("value");
-            var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=" + show + "&limit=10&offset=0&rating=G&lang=en";
-
-           
-
-
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).done(function(response) {
-                console.log(response);
-                console.log(response.data);
-                var results = response.data;
-                for (var i = 0; i < results.length; i++) {
-                    var gifDiv = $("<div>");
-                    var gifRating = $("<div>").append("<h4> Rating: " + results[i].rating + "</h4>");
-                    var gifImage = $("<img class='gif'>");
-                    gifImage.attr("src", results[i].images.downsized_still.url);
-                    gifImage.attr("data-state", "still");
-                    gifImage.attr("data-still", results[i].images.downsized_still.url);
-                    gifImage.attr("data-animate", results[i].images.downsized.url)
-
-
-
-                    gifRating.append(gifImage);
-                    gifDiv.append(gifRating)
-                    $("#gifSpace").prepend(gifDiv);       
-                }
-                 $(".gif").on("click", function() {
-                var state = $(this).attr("data-state");
-
-                console.log(state);
-
-                if (state === "still") {
-                    $(this).attr("src", $(this).attr("data-animate"));
-                    $(this).attr("data-state", "animate")
-                } else {
-                    $(this).attr("src", $(this).attr("data-still"));
-                    $(this).attr("data-state", "still")
-                    }
-                });
-            });
-        })
-    }
-
-
-    $("#add-show").on("click", function(event) {
-        event.preventDefault();
-
-        var show = $("#show-input").val().trim();
-
-        ninetysfavorites.push(show);
-
-        setButtons();
-    })
-
-    setButtons();
-    </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script type="text/javascript" src="assets/javascript/giphy.js">
+            
+            </script>
 </body>
 
 </html>

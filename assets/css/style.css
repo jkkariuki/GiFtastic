@@ -1,13 +1,49 @@
-.showBtn{
-	display: inline-block;
-	margin-right: 10px;
+body {
+    background-image: url(../images/skyscraper.png);
+    font-family: 'Permanent Marker', cursive;
 }
 
-#gifSpace{
-	border: 2px solid black;
+#button-space {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-#gifs{
-	display: inline-block;
-	margin-right: 5px;
+#show-form {
+    font-family: 'Permanent Marker', cursive;
+    color: green;
+}
+
+.showBtn {
+    display: inline-block;
+    margin-right: 10px;
+    background-color: green;
+    font-family: 'Permanent Marker', cursive;
+    padding: 10px;
+}
+
+.rating {
+    font-family: 'Permanent Marker', cursive;
+    background-color: green;
+    font-size: 24px;
+}
+
+#gifSpace {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#gifs {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.gif {
+    height: 250px;
+    width: 300px;
+    display: inline-block;
+}
+
+.gifdiv {
+    display: inline-block;
+    margin-left: 10px
 }
